@@ -58,27 +58,20 @@
         </div>
 
         <div class="mb-3">
-            <label for="technologies">Technologies</label>
-            <select 
-            multiple name="technologies[]"
-            class="
-                form-select 
-                @error('technologies')
-                    is_invalid
-                @enderror
-            ">
+            <label for="technologies" class="form-label">Technologies</label>
+            <select multiple name="technologies[]" class="form-select @error('technologies') is_invalid @enderror" id="technlogies">
 
-                <option disabled value="">Select all relevant technologies</option>
-                
-                @forelse ($technologies as $technology)
-                    <option 
-                        value="{{ $technology->id }}"
-                        >{{ $technology->name }}
-                    </option>
-                @empty
-                    
-                    <option value="">No technologies available</option>
-                @endforelse
+              <option disabled value="">Select all relevant technologies</option>
+
+              @forelse ($technologies as $technology)
+              
+                <option value="{{ $technology->id }}">{{ $technology->name }}</option>
+
+              @empty
+
+                <option value="">No technologies available</option>
+              @endforelse
+
             </select>
         </div>
 

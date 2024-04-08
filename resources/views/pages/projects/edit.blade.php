@@ -65,29 +65,26 @@
         </div>
 
         <div class="mb-3">
-            <label for="technologies">Technologies</label>
-            <select 
-            multiple name="technologies[]"
-            class="
-                form-select 
-                @error('technology_id')
-                    is_invalid
-                @enderror
-            ">
+            <label for="technologies" class="form-label">Technologies</label>
+            <select multiple name="technologies[]" class="form-select @error('technology_id') is_invalid @enderror" id="technlogies">
 
-                <option disabled value="">Select all relevant technologies</option>
-                
-                @forelse ($technologies as $technology)
-                    @if ($errors->any())
-                        <option value="{{ $technology->id }}" {{ in_array($technology->id, old('technologies', [])) ? 'selected' : '' }}>{{ $technology->name }}</option>
-                    @else
-                        <option value="{{ $technology->id }}" {{ $project->technology->contains($technology->id) ? 'selected' : '' }}>{{ $technology->name }}</option>
-                    @endif
-                    
-                @empty
-                    
-                    <option value="">No technologies available</option>
-                @endforelse
+              <option disabled value="">Select all relevant technologies</option>
+
+              @forelse ($technologies as $technology)
+              
+                @if ($errors->any())
+                    <option value="{{ $technology->id }}"
+                        {{ in_array($technology->id, old('technologies', [])) ? 'selected' : '' }}>{{ $technology->name }}</option>
+                @else
+                    <option value="{{ $technology->id }}"
+                        {{ $project->technology->contains($technology->id) ? 'selected' : '' }}>{{ $technology->name }}</option>
+                @endif                
+
+              @empty
+
+                <option value="">No technologies available</option>
+              @endforelse
+
             </select>
         </div>
 
