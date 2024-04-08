@@ -58,6 +58,31 @@
         </div>
 
         <div class="mb-3">
+            <label for="technologies">Technologies</label>
+            <select 
+            multiple name="technologies[]"
+            class="
+                form-select 
+                @error('technologies')
+                    is_invalid
+                @enderror
+            ">
+
+                <option disabled value="">Select all relevant technologies</option>
+                
+                @forelse ($technologies as $technology)
+                    <option 
+                        value="{{ $technology->id }}"
+                        >{{ $technology->name }}
+                    </option>
+                @empty
+                    
+                    <option value="">No technologies available</option>
+                @endforelse
+            </select>
+        </div>
+
+        <div class="mb-3">
             <label for="software" class="form-label">Softwares</label>
             <input name="software" type="text" class="form-control" id="software">
         </div>
